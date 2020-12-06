@@ -1,19 +1,6 @@
-document.addEventListener('DOMContentLoaded', function(){
+import {} from './pages/home.js';
 
-	// const loadHeader = () => {
-	// 	var xhttp = new XMLHttpRequest();
-	// 	xhttp.onreadystatechange = function() {
-	// 		if (this.readyState == 4){
-	// 			var content = document.querySelector("#header");
-	// 			if(this.status == 200) {
-	// 				content.innerHTML = xhttp.responseText;
-	// 			}
-	// 		}
-	// 	};
-	// 	xhttp.open("GET", 'header.html', true);
-	// 	xhttp.send();
-	// }
-
+document.addEventListener('DOMContentLoaded', () => {
 	const setNavItemActive = (active) => {
 		document.querySelectorAll('nav li')
 			.forEach((elm) => {
@@ -43,12 +30,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		xhttp.send();
 		setNavItemActive(page);
 	}
-	
-	// Load page content
+
 	let currentPage = window.location.hash.substr(1);
 	if(currentPage == '') currentPage = 'home';
 	loadPage(currentPage);
-	// loadHeader()
 
 	document.querySelectorAll('nav a')
 	.forEach((elm) => {
