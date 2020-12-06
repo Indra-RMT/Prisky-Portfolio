@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 	
 	// Load page content
-	const currentPage = window.location.hash.substr(1);
+	let currentPage = window.location.hash.substr(1);
 	if(currentPage == '') currentPage = 'home';
 	loadPage(currentPage);
 	// loadHeader()
