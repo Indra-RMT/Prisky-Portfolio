@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100vh;
+  /* height: 100vh; */
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
 }
@@ -68,6 +68,11 @@ nav li {
   cursor: pointer;
 }
 
+nav li>a {
+  text-decoration: none;
+  color: inherit;
+}
+
 nav li:hover {
   color: #555555;
 }
@@ -76,6 +81,25 @@ nav li.active {
   border-bottom: 3px solid #000000;
 }
 
+ul.show-category {
+  display: flex;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+ul.show-category li {
+  cursor: pointer;
+  padding: 2px 15px;
+  border: 1px solid #000000;
+  margin: 0 9px;
+}
+
+ul.show-category li.active {
+  color: #ffffff;
+  background-color: #000000;
+}
 
 
 

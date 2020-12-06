@@ -1,66 +1,31 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-	// SIDEBAR NAVIGATION
-	var elems = document.querySelectorAll('.sidenav');
-	// M.Sidenav.init(elems);
-	// loadNav();
+	// const loadHeader = () => {
+	// 	var xhttp = new XMLHttpRequest();
+	// 	xhttp.onreadystatechange = function() {
+	// 		if (this.readyState == 4){
+	// 			var content = document.querySelector("#header");
+	// 			if(this.status == 200) {
+	// 				content.innerHTML = xhttp.responseText;
+	// 			}
+	// 		}
+	// 	};
+	// 	xhttp.open("GET", 'header.html', true);
+	// 	xhttp.send();
+	// }
 
-	function loadNav()
-	{
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4){
-				if(this.status != 200) return;
+	const setNavItemActive = (active) => {
+		document.querySelectorAll('nav li')
+			.forEach((elm) => {
+				elm.classList.remove('active');
+			});
 
-				// Muat daftar tautan menu
-				document.querySelectorAll(".topnav, .sidenav")
-				.forEach(function(elm){
-					elm.innerHTML = xhttp.responseText;
-				});
-
-				// Daftarkan event listener untuk setiap tautan menu
-				document.querySelectorAll('.sidenav a, .topnav a')
-				.forEach(function(elm){
-					elm.addEventListener('click', function(event){
-						// Tutup sidenav
-						var sidenav = document.querySelector('.sidenav');
-						M.Sidenav.getInstance(sidenav).close();
-						
-						// Muat konten halaman yang dipanggil 
-						page = event.target.getAttribute('href').substr(1);
-						loadPage(page);
-					});
-				});
-			}
-		};
-		xhttp.open("GET", 'nav.html', true);
-		xhttp.send();
+		const currentPage = `.nav-${active.replace(/\//g, '')}`;
+		const selectedNavItem = document.querySelector(currentPage);
+		if (selectedNavItem) selectedNavItem.classList.add("active");
 	}
 
-	const loadHeader = () => {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4){
-				var content = document.querySelector("#header");
-				if(this.status == 200) {
-					content.innerHTML = xhttp.responseText;
-				}
-			}
-		};
-		xhttp.open("GET", 'header.html', true);
-		xhttp.send();
-	}
-	
-	// Load page content
-	var page = window.location.hash.substr(1);
-	if(page == '') page = 'home';
-	loadPage(page);
-	loadHeader()
-
-	console.log(loadHeader);
-
-	function loadPage(page)
-	{
+	const loadPage = (page) => {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4){
@@ -76,6 +41,20 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 		xhttp.open("GET", 'pages/'+page+'.html', true);
 		xhttp.send();
+		setNavItemActive(page);
 	}
+	
+	// Load page content
+	const currentPage = window.location.hash.substr(1);
+	if(currentPage == '') currentPage = 'home';
+	loadPage(currentPage);
+	// loadHeader()
 
+	document.querySelectorAll('nav a')
+	.forEach((elm) => {
+		elm.addEventListener('click', (event) => {
+			const selectedPage = event.target.getAttribute('href').substr(1);
+			loadPage(selectedPage);
+		});
+	});
 });
