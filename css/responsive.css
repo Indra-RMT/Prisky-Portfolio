@@ -1,0 +1,10 @@
+/*
+ * Resposive for mobile 0 - 600
+ *
+ */
+
+@media screen and (max-width: 600px) {
+  #homeContent img {
+    margin-bottom: 30px;
+  }
+}

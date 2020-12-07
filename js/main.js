@@ -51,6 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	let currentPage = location.hash.substr(1).replace(/^\/|\/$/g, '').split("/");
-	if(currentPage == '') currentPage = 'home';
+	if(currentPage[0] === '') currentPage[0] = 'home';
 	loadPage(currentPage[0]);
 });
