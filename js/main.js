@@ -22,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	const loadPage = (page) => {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
-			console.log('onreadystatechange')
+			console.log(this.readyState);
 			if (this.readyState == 4){
 				var content = document.querySelector("#main");
 				if(this.status == 200) {
 					content.innerHTML = xhttp.responseText;
+					console.log(page);
 					initPageHandler(page)
 				} else if(this.status == 404) {
 					content.innerHTML = "<p>Halaman tidak ditemukan.</p>";
