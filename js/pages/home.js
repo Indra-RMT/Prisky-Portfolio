@@ -57,7 +57,3 @@ window.clickedCategoryAll = categoryAllClickedHandler;
 window.clickedCategoryStudyCase = categoryStudyCaseClickedHandler;
 window.clickedCategoryMobile = categoryMobileClickedHandler;
 window.clickedCategoryWeb = categoryWebClickedHandler;
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   console.log('main')
-// })
