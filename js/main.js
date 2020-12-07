@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const initPageHandler = (currentPage) => {
 		if (currentPage === '/home') {
+			console.log('init')
 			initHomePage();
 		}
 	} 
