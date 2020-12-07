@@ -1,4 +1,5 @@
 import {initHomePage} from './pages/home.js';
+import {initDetailPage} from './pages/detail.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	const setNavItemActive = (active) => {
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	const initPageHandler = (currentPage) => {
 		if (currentPage === '/home' || currentPage === 'home') {
 			initHomePage();
+		}
+		if (currentPage === '/detail' || currentPage === 'detail') {
+			const detail = location.hash.substr(1).replace(/^\/|\/$/g, '').split("/");
+			initDetailPage(detail[1]);
 		}
 	} 
 
@@ -36,18 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		xhttp.open("GET", 'pages/'+page+'.html', true);
 		xhttp.send();
 		setNavItemActive(page);
-		
 	}
 
-	let currentPage = window.location.hash.substr(1);
-	if(currentPage == '') currentPage = 'home';
-	loadPage(currentPage);
+	window.onpopstate = () => {
+		let url = location.hash.substr(1).replace(/^\/|\/$/g, '').split("/");
+		if (url === '' || url === '/') url = 'home';
+		loadPage(url[0]);
+	};
 
-	document.querySelectorAll('nav a')
-	.forEach((elm) => {
-		elm.addEventListener('click', (event) => {
-			const selectedPage = event.target.getAttribute('href').substr(1);
-			loadPage(selectedPage);
-		});
-	});
+	let currentPage = location.hash.substr(1).replace(/^\/|\/$/g, '').split("/");
+	if(currentPage == '') currentPage = 'home';
+	loadPage(currentPage[0]);
 });

@@ -21,7 +21,7 @@ const selectCategory = (category) => {
 const setPortfolioList = (portfolioList) => {
   const listWrapper = document.querySelector('#homeContent');
   const htmlList = portfolioList.map(list => {
-    return `<img src="../../public/img/${list.image}">`
+    return `<a href="/#/detail/${list.slug}"><img src="../../public/img/${list.image}"></a>`
   }).join('');
   listWrapper.innerHTML = htmlList;
 }

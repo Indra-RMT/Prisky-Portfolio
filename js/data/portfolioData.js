@@ -1,42 +1,42 @@
 export const portfolioData = [
   {
-    id: 1,
+    slug: 'angel',
     name: 'ui/ux',
     image: 'angel.png',
     category: 'study case'
   },
   {
-    id: 2,
+    slug: 'workout',
     name: 'workout',
     image: 'workout.jpg',
     category: 'mobile'
   },
   {
-    id: 3,
+    slug: 'stereo',
     name: 'stereo',
     image: 'stereo.jpg',
     category: 'mobile'
   },
   {
-    id: 4,
+    slug: 'league',
     name: 'league',
     image: 'league.jpg',
     category: 'mobile'
   },
   {
-    id: 5,
+    slug: 'course',
     name: 'course',
     image: 'course.jpg',
     category: 'mobile'
   },
   {
-    id: 6,
+    slug: 'cinemax',
     name: 'cinemax',
     image: 'cinemax.jpg',
     category: 'mobile'
   },
   {
-    id: 5,
+    slug: 'botanica',
     name: 'botanica',
     image: 'botanica.jpg',
     category: 'web'
@@ -59,4 +59,10 @@ export const dataWeb = (portfolioData) => {
   return portfolioData.filter(function (el) {
     return el.category === 'web';
   });
+}
+
+export const getDataPortfolioBySlug = (portfolioData, slug) => {
+  return portfolioData.filter(function (el) {
+    return el.slug === slug;
+  })[0];
 }
