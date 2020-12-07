@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const loadPage = (page) => {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
+			console.log('onreadystatechange')
 			if (this.readyState == 4){
 				var content = document.querySelector("#main");
 				if(this.status == 200) {
