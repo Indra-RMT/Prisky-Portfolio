@@ -24,10 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	} 
 
 	const loadPage = (page) => {
-		var xhttp = new XMLHttpRequest();
+		const content = document.querySelector("#main");
+		content.innerHTML = 'Loading...';
+		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4){
-				var content = document.querySelector("#main");
 				if(this.status == 200) {
 					content.innerHTML = xhttp.responseText;
 					initPageHandler(page)
