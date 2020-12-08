@@ -124,6 +124,7 @@ ul.show-category li.active {
   font-size: 0.9em;
   font-weight: 400;
   line-height: 1.6em;
+  text-align: justify;
 }
 
 footer {
